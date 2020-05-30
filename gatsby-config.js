@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@johndoe`,
+    title: `Portfolio App`,
+    description: `A Gastby-WordPress Project using React and WordPress`,
+    author: `@locaulker`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -34,14 +34,15 @@ module.exports = {
         baseUrl: "portfolio-wp-api.test",
         protocol: "http",
         hostingWPCOM: false,
-        // Using some advanced custom fields PRO
+        // Using advanced custom fields PRO
         useACF: true,
         acfOptionPageIds: [],
         verboseOutput: false,
         perPage: 100,
         searchAndReplaceContentUrls: {
           sourceUrl: "http://portfolio-wp-api.test",
-          replacementUrl: "https://localhost:8000",
+          // replacementUrl: "http://localhost:8000",
+          replacementUrl: "http://portfolio-wp-api.test",
         },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
