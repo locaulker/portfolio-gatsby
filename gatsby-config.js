@@ -16,6 +16,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sitemap`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -54,6 +55,7 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
+          "**/menus",
         ],
         excludedRoutes: [],
         normalizer: function ({ entities }) {
