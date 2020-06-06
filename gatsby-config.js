@@ -1,3 +1,15 @@
+let activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+console.log(`Using environment config: '${activeEnv}'`)
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
+
+console.log(
+  `This WordPress Endpoint is used: '${process.env.WORDPRESS_BASE_URL}'`
+)
+
 module.exports = {
   siteMetadata: {
     title: `Portfolio App`,
@@ -32,7 +44,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "portfolio-wp-api.test",
+        baseUrl: `${process.env.WORDPRESS_BASE_URL}`,
         protocol: "http",
         hostingWPCOM: false,
         // Using advanced custom fields PRO
@@ -41,9 +53,8 @@ module.exports = {
         verboseOutput: false,
         perPage: 100,
         searchAndReplaceContentUrls: {
-          sourceUrl: "http://portfolio-wp-api.test",
-          // replacementUrl: "http://localhost:8000",
-          replacementUrl: "http://portfolio-wp-api.test",
+          sourceUrl: `https://${process.env.WORDPRESS_BASE_URL}`,
+          replacementUrl: "http://localhost:8000",
         },
         // Set how many simultaneous requests are sent at once.
         concurrentRequests: 10,
@@ -56,6 +67,7 @@ module.exports = {
           "**/taxonomies",
           "**/users",
           "**/menus",
+          "**/portfolio",
         ],
         excludedRoutes: [],
         normalizer: function ({ entities }) {
